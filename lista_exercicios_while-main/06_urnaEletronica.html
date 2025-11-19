@@ -2,29 +2,70 @@
 <script>
     /*
     PROBLEMA: URNA ELETRÔNICA
-    Faça um programa que simule a urna eletrônica.
-    A tela a ser apresentada deverá ser da seguinte forma:
-    As opções são:
-    1. Candidato Joãozinho
-    2. Candidato Mariazinha
-    3. Nulo
-    4. Branco
-    Entre com o seu voto:
-
-    O programa deverá ler os votos dos eleitores e, quando for entrado o número 0, apresentar as seguintes
-    informações:
-    a) O número de votos de cada candidato;
-    b) A porcentagem de votos nulos;
-    c) A porcentagem de votos brancos;
-    d) O candidato vencedor.
     */
 
-    //ENTRADA
+    // ENTRADA
+    let votosJoao = 0;
+    let votosMaria = 0;
+    let votosNulo = 0;
+    let votosBranco = 0;
 
+    let voto = -1; 
 
-    //PROCESSAMENTO
+    // PROCESSAMENTO
+    while (voto != 0) {
+        voto = Number(prompt(
+            "As opções são:\n" +
+            "1. Candidato Joãozinho\n" +
+            "2. Candidato Mariazinha\n" +
+            "3. Nulo\n" +
+            "4. Branco\n" +
+            "Digite seu voto (0 para encerrar):"
+        ));
 
+        if (voto === 1) {
+            votosJoao++;
+        } 
+        else if (voto === 2) {
+            votosMaria++;
+        } 
+        else if (voto === 3) {
+            votosNulo++;
+        } 
+        else if (voto === 4) {
+            votosBranco++;
+        } 
+        else if (voto !== 0) {
+            alert("Voto inválido! Tente novamente.");
+        }
+    }
 
-    //SAÍDA
+    
+    let totalVotos = votosJoao + votosMaria + votosNulo + votosBranco;
 
+    
+    let percNulo = (votosNulo / totalVotos) * 100;
+    let percBranco = (votosBranco / totalVotos) * 100;
+
+    // determinar vencedor
+    let vencedor = "";
+    if (votosJoao > votosMaria) {
+        vencedor = "Joãozinho";
+    } else if (votosMaria > votosJoao) {
+        vencedor = "Mariazinha";
+    } else {
+        vencedor = "Empate";
+    }
+
+    // SAÍDA
+    document.write("<h2>Resultado da Eleição</h2>");
+    document.write("Votos Joãozinho: " + votosJoao + "<br>");
+    document.write("Votos Mariazinha: " + votosMaria + "<br>");
+    document.write("Votos Nulo: " + votosNulo + "<br>");
+    document.write("Votos Branco: " + votosBranco + "<br><br>");
+
+    document.write("Porcentagem Nulo: " + percNulo.toFixed(2) + "%<br>");
+    document.write("Porcentagem Branco: " + percBranco.toFixed(2) + "%<br><br>");
+
+    document.write("<strong>Vencedor: " + vencedor + "</strong><br>");
 </script>
