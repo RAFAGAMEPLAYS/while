@@ -6,9 +6,14 @@
     */
 
     //ENTRADA
+    let nota=Number(prompt("informe um numero entre xero e dez"));
 
 
     //PROCESSAMENTO
+    while(nota<0||nota>10){
+        alert("informe novamente");
+        nota=Number(prompt("informe um numero entre xero e dez"));
+    }
 
 
     //SAÍDA
